@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Premier League Wiki</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Premier League Wiki", teams_path %></a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li><%= link_to "Current Teams", teams_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Team Locations", locations_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Past Winners", winners_path %></li>
+    </ul>
+  </section>
+</nav>
+
+
+
+  
+	
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+<%= yield :scripts %>
+
+<% if user_signed_in? %>
+<div>Signed in as... <%= current_user.email %> (<%= link_to 'Sign out', destroy_user_session_path, :method => :delete
+%>)</div>
+<% else %>
+<%= link_to 'Register', new_user_registration_path
+%> or <%= link_to 'Sign in', new_user_session_path %>
+<% end %>
+<h5>All users can edit the content of this website as long as they are registered and logged in</h5>
+<p><%= Blackbird1::Message.bird? %></p>
+
+<footer class="row">
+    <div class="twelve columns">
+      <hr />
+      <div class="row">
+        <div class="six columns">
+          <p>&copy; Michael Brennan</p>
+        </div>
+        <div class="six columns">
+          <ul class="link-list right">
+           <li><%= link_to "Current Teams", teams_path %></li>
+            <li><%= link_to "Team Locations", locations_path %></li>
+            <li><%= link_to "Past Locations", winners_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

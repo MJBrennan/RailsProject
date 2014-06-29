@@ -1,0 +1,30 @@
+<h1>Past winners</h1>
+<p>Here are the past winners of the Premier League</p>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Team</th>
+    <th>Year</th>
+    <th>Points</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @winners.each do |winner| %>
+  <tr>
+    <td><%= winner.Year %></td>
+    <td><%= winner.Team %></td>
+    <td><%= winner.Year %></td>
+    <td><%= winner.Points %></td>
+    <td><%= link_to 'Show', winner %></td>
+    <td><%= link_to 'Edit', edit_winner_path(winner) %></td>
+    <td><%= link_to 'Destroy', winner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Winner', new_winner_path %>
